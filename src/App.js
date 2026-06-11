@@ -1,9 +1,7 @@
-```javascript
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import MarkdownEditor from './components/MarkdownEditor';
-import PreviewPane from './components/PreviewPane';
-import { parseMarkdownToHtml } from './utils/markdownParser'; // Assuming this is the named export for the parsing utility
+import React, { useState } from "react";
+import "./App.css";
+import MarkdownEditor from "./components/MarkdownEditor";
+import PreviewPane from "./components/PreviewPane";
 
 /**
  * App Component
@@ -67,25 +65,10 @@ greet("Markdown Enthusiast");
   // Initialized with the example content.
   const [markdownText, setMarkdownText] = useState(initialMarkdown);
 
-  // State to hold the HTML content generated from the markdown.
-  // This will be passed to the PreviewPane component.
-  const [htmlContent, setHtmlContent] = useState('');
-
-  /**
-   * useEffect hook to parse markdown to HTML whenever `markdownText` changes.
-   * This ensures the preview pane is always up-to-date with the editor's content.
-   * The parsing logic is encapsulated in the `markdownParser` utility.
-   */
-  useEffect(() => {
-    // Call the utility function to convert markdown to HTML.
-    const parsedHtml = parseMarkdownToHtml(markdownText);
-    setHtmlContent(parsedHtml);
-  }, [markdownText]); // Dependency array: re-run this effect whenever markdownText changes
-
   return (
     <div className="App">
       {/* Application Header */}
-      <header className="App-header">
+      <header className="app-header">
         <h1>Markdown Previewer</h1>
         {/* Cross-project context:
             In a real microservice setup, this app might be used to edit content
@@ -96,22 +79,25 @@ greet("Markdown Enthusiast");
       </header>
 
       {/* Main content area containing the editor and preview panes */}
-      <main className="App-main-content">
+      <main className="main-content">
         {/* Markdown Editor Component */}
         {/* It receives the current markdown text and a function to update it. */}
         <MarkdownEditor
-          markdown={markdownText}
-          onMarkdownChange={setMarkdownText} // Pass the state setter directly for updates
+          initialMarkdownText={markdownText}
+          onMarkdownChange={setMarkdownText}
         />
 
         {/* Preview Pane Component */}
         {/* It receives the parsed HTML content to display. */}
-        <PreviewPane html={htmlContent} />
+        <PreviewPane markdownText={markdownText} />
       </main>
 
       {/* Application Footer */}
-      <footer className="App-footer">
-        <p>&copy; {new Date().getFullYear()} Markdown Previewer. Part of the interconnected system.</p>
+      <footer className="app-footer">
+        <p>
+          &copy; {new Date().getFullYear()} Markdown Previewer. Part of the
+          interconnected system.
+        </p>
         {/* Further cross-project context:
             This content could potentially be sent to an 'AI-Powered Content Summarizer'
             for generating summaries or keywords, or shared via a 'Collaborative Code Editor'
@@ -123,4 +109,3 @@ greet("Markdown Enthusiast");
 }
 
 export default App;
-```

@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client'; // Using createRoot for React 18+ for modern React applications
+import React from "react";
+import ReactDOM from "react-dom/client"; // Using createRoot for React 18+ for modern React applications
 
-import App from './App'; // Import the main application component
-import './App.css'; // Import global styles for the application
+import App from "./App"; // Import the main application component
+import "./App.css"; // Import global styles for the application
 
 /**
  * src/index.js
@@ -24,7 +24,7 @@ import './App.css'; // Import global styles for the application
 
 // Get the root DOM element where the React application will be mounted.
 // This element is typically found in `public/index.html`.
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 // Create a React root using `ReactDOM.createRoot()`.
 // This is the recommended way to render React applications starting with React 18,
@@ -37,7 +37,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

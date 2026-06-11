@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 /**
  * DEFAULT_PLACEHOLDER_MARKDOWN
@@ -68,12 +68,12 @@ Imagine this editor being used to draft content for the **Full-Stack Blog Platfo
  * @param {string} [props.initialMarkdownText=''] - Optional initial markdown text
  *   to populate the editor with. If not provided, a default placeholder text is used.
  */
-const MarkdownEditor = ({ onMarkdownChange, initialMarkdownText = '' }) => {
+const MarkdownEditor = ({ onMarkdownChange, initialMarkdownText = "" }) => {
   // State to hold the current markdown text displayed in the textarea.
   // It's initialized with either the `initialMarkdownText` prop or the
   // `DEFAULT_PLACEHOLDER_MARKDOWN` if `initialMarkdownText` is empty.
   const [markdownInput, setMarkdownInput] = useState(
-    initialMarkdownText || DEFAULT_PLACEHOLDER_MARKDOWN
+    initialMarkdownText || DEFAULT_PLACEHOLDER_MARKDOWN,
   );
 
   /**
@@ -118,13 +118,13 @@ const MarkdownEditor = ({ onMarkdownChange, initialMarkdownText = '' }) => {
   };
 
   return (
-    <div className="markdown-editor-container">
+    <div className="editor-container">
       <label htmlFor="markdown-input" className="editor-label">
         Markdown Editor
       </label>
       <textarea
         id="markdown-input"
-        className="markdown-input"
+        className="markdown-editor"
         value={markdownInput} // Controlled component: textarea value is tied to state.
         onChange={handleChange} // Update state and notify parent on change.
         placeholder="Start typing your markdown here..." // This will only be visible if markdownInput is empty.
