@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { parseMarkdownToHtml } from '../utils/markdownParser';
+import React from "react";
+import PropTypes from "prop-types";
+import { parseMarkdownToHtml } from "../utils/markdownParser";
 
 /**
  * PreviewPane Component
@@ -20,21 +20,15 @@ import { parseMarkdownToHtml } from '../utils/markdownParser';
  * @param {string} props.markdownText - The markdown text to be rendered into HTML.
  */
 const PreviewPane = ({ markdownText }) => {
-  // Convert the markdown text to HTML using the utility function.
   const htmlContent = parseMarkdownToHtml(markdownText);
 
   return (
-    <div className="preview-pane">
-      <h2 className="preview-pane__title">Rendered Output</h2>
+    <div className="preview-container">
       <div
-        className="preview-pane__content"
-        // dangerouslySetInnerHTML is used here to render the HTML string directly.
-        // React intentionally makes this dangerous, as it can expose users to XSS attacks
-        // if the HTML is not properly sanitized.
-        // We rely on `parseMarkdownToHtml` to handle any necessary sanitization.
+        className="preview-pane"
         dangerouslySetInnerHTML={{ __html: htmlContent }}
-        aria-live="polite" // Announce changes to screen readers
-        aria-atomic="true" // Announce the entire region as a single unit
+        aria-live="polite"
+        aria-atomic="true"
       />
     </div>
   );

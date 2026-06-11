@@ -4,8 +4,8 @@
  * This module leverages the 'marked' library for robust and secure Markdown rendering.
  */
 
-import { marked } from 'marked';
-import DOMPurify from 'dompurify'; // For sanitizing the HTML output
+import { marked } from "marked";
+import DOMPurify from "dompurify"; // For sanitizing the HTML output
 
 /**
  * Configures the 'marked' library with common options for a rich markdown experience.
@@ -34,10 +34,10 @@ marked.setOptions({
  * @param {string} markdownText The Markdown string to parse.
  * @returns {string} The sanitized HTML string.
  */
-export const parseMarkdown = (markdownText) => {
-  if (typeof markdownText !== 'string') {
-    console.warn('parseMarkdown received non-string input:', markdownText);
-    return '';
+export const parseMarkdownToHtml = (markdownText) => {
+  if (typeof markdownText !== "string") {
+    console.warn("parseMarkdown received non-string input:", markdownText);
+    return "";
   }
 
   // 1. Parse Markdown to HTML using 'marked'
@@ -88,7 +88,7 @@ console.log(greeting);
 Check out the [E-commerce Storefront](http://localhost:3001) or the [Full-Stack Blog Platform](http://localhost:3003)!
 `;
 
-  const parsedHtml = parseMarkdown(testMarkdown);
+  const parsedHtml = parseMarkdownToHtml(testMarkdown);
   console.log('--- Original Markdown ---');
   console.log(testMarkdown);
   console.log('\n--- Parsed and Sanitized HTML ---');
